@@ -3,13 +3,13 @@ import { StyleSheet, Text, View, SafeAreaView, Platform, StatusBar } from 'react
 
 // import colors were using
 import colors from './app/config/colors';
+import HomeScreen from './app/screens/HomeScreen';
 
 export default function App() {
   return (
     // Views for IOS and Androids
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <HomeScreen />
     </SafeAreaView>
   );
 }
@@ -19,8 +19,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0, // set view below status bar for androids
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   text: {
     color: colors.secondary,
