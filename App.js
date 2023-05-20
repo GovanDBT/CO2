@@ -1,6 +1,9 @@
 // import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView, Platform, StatusBar } from 'react-native';
 
+// import colors were using
+import colors from './app/config/colors';
+
 export default function App() {
   return (
     // Views for IOS and Androids
@@ -14,12 +17,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#282c34',
+    backgroundColor: colors.primary,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0, // set view below status bar for androids
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    color: '#fff',
+    color: colors.secondary,
   },
 });
