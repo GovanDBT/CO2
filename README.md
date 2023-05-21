@@ -1,5 +1,5 @@
 # CO2 App by Bread-Slice
-![Frame 12](https://github.com/GovanDBT/CO2/assets/62579660/a5ff66d5-fbe5-41f8-b0fb-c7dd3519602b)
+![Frame 12 (2)](https://github.com/GovanDBT/CO2/assets/62579660/b0959fc4-4870-4119-98b1-6f3f01ffe58a)
 
 ## Project Summary
 ### The issus we are hoping to solve
