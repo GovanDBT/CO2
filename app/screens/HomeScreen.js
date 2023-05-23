@@ -9,7 +9,9 @@ import { FontAwesome5 } from '@expo/vector-icons';
 function HomeScreen(props) {
     return (
       <View style={styles.nav}>
-        <View style={styles.search}/>
+        <View style={styles.search}>
+          <FontAwesome5 style={styles.searchIcon} name="brain" size={25} color="#fff"/>
+        </View>
         <FontAwesome5 name="bars" size={35} color={colors.secondary}/>
       </View>
     );
@@ -24,15 +26,18 @@ const styles = StyleSheet.create({
     top: 10,
   },
   search: {
-    backgroundColor: 'tomato', 
+    backgroundColor: '#fff', 
     borderRadius: 30,
-    width: 240,
-    height: 70,
+    width: 245,
+    height: 45,
+    justifyContent: 'center',
   },
-  bars : {
-    backgroundColor: 'blue',
-    width: 80,
-    height: 70,
+  searchIcon: {
+    backgroundColor: colors.secondary,
+    width: 39,
+    padding: 5,
+    borderRadius: 30,
+    marginLeft: 4,
   },
 })
 

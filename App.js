@@ -12,7 +12,6 @@ export default function App() {
     // Views for IOS and Androids
     <SafeAreaView style={styles.container}>
       <HomeScreen />
-      <AppText>Whereas</AppText>
     </SafeAreaView>
   );
 }
