@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, SafeAreaView, Platform, StatusBar } from 'react
 
 // import colors were using
 import colors from './app/config/colors';
+// import default app text
+import AppText from './app/components/AppText';
 import HomeScreen from './app/screens/HomeScreen';
 
 export default function App() {
@@ -10,6 +12,7 @@ export default function App() {
     // Views for IOS and Androids
     <SafeAreaView style={styles.container}>
       <HomeScreen />
+      <AppText>Whereas</AppText>
     </SafeAreaView>
   );
 }
