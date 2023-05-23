@@ -3,12 +3,14 @@ import { View, StyleSheet, StatusBar, Platform } from 'react-native';
 
 // import colors were using
 import colors from '../config/colors';
+// import react icons
+import { FontAwesome5 } from '@expo/vector-icons';
 
 function HomeScreen(props) {
     return (
       <View style={styles.nav}>
         <View style={styles.search}/>
-        <View style={styles.bars}/>
+        <FontAwesome5 name="bars" size={35} color={colors.secondary}/>
       </View>
     );
 }
