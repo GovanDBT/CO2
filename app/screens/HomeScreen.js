@@ -1,29 +1,50 @@
 import React from 'react';
-import { View, StyleSheet, StatusBar, Platform } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ScrollView, Text, SafeAreaView} from 'react-native';
 
 // import colors were using
 import colors from '../config/colors';
 // import react icons
 import { FontAwesome5 } from '@expo/vector-icons';
+// import custom buttons
+import AppButton from '../components/AppButton';
 
 function HomeScreen(props) {
     return (
-      <View style={styles.nav}>
-        <View style={styles.search}>
-          <FontAwesome5 style={styles.searchIcon} name="brain" size={25} color="#fff"/>
+      <SafeAreaView>
+        <View style={styles.nav}>
+          <View style={styles.search}>
+            <TouchableOpacity style={styles.searchIcon}>
+              <FontAwesome5  name="brain" size={25} color="#fff"/>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity onPress={() => console.log("Bar Tapped")}>
+            <FontAwesome5 name="bars" size={35} color={colors.secondary}/>
+          </TouchableOpacity>
         </View>
-        <FontAwesome5 name="bars" size={35} color={colors.secondary}/>
-      </View>
+        <ScrollView>
+          <View style={styles.buttonView}>
+            <AppButton title="Global" onPress={() => console.log("Tapped Global")} color='secondary' textColor='white'/>
+            <AppButton title="Regional" onPress={() => console.log("Tapped Regional")}/>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
+  buttonView: {
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
   nav: {
     flex: 0,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
     top: 10,
+    marginBottom: 30,
   },
   search: {
     backgroundColor: '#fff', 
@@ -31,6 +52,7 @@ const styles = StyleSheet.create({
     width: 245,
     height: 45,
     justifyContent: 'center',
+    
   },
   searchIcon: {
     backgroundColor: colors.secondary,
@@ -38,6 +60,8 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 30,
     marginLeft: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
 
