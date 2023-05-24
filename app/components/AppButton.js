@@ -19,13 +19,13 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: colors.white,
         padding: 10,
-        width: '45%',
+        width: '40%',
         justifyContent: 'center',
         alignItems: 'center',
     },
     text: {
         color: colors.primary,
-        fontSize: 20,
+        fontSize: 14,
         textTransform: 'uppercase',
         fontWeight: 'bold',
     }

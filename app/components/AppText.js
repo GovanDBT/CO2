@@ -3,9 +3,9 @@ import React from 'react';
 
 import { Text, StyleSheet, Platform } from 'react-native'
 
-function AppText(props) {
+function AppText({children, style}) {
     return (
-        <Text style={styles.text}>{props.children}</Text>
+        <Text style={[styles.text, style]}>{children}</Text>
     );
 }
 

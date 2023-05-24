@@ -7,6 +7,8 @@ import colors from '../config/colors';
 import { FontAwesome5 } from '@expo/vector-icons';
 // import custom buttons
 import AppButton from '../components/AppButton';
+// import slide
+import Onboarding from '../components/Onboarding';
 
 function HomeScreen(props) {
     return (
@@ -26,6 +28,7 @@ function HomeScreen(props) {
             <AppButton title="Global" onPress={() => console.log("Tapped Global")} color='secondary' textColor='white'/>
             <AppButton title="Regional" onPress={() => console.log("Tapped Regional")}/>
           </View>
+          <Onboarding />
         </ScrollView>
       </SafeAreaView>
     );
