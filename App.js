@@ -1,18 +1,37 @@
-// import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, Platform, StatusBar } from 'react-native';
+import 'react-native-gesture-handler';
+import React from 'react-native';
+import { StyleSheet, Dimensions, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 // import colors were using
 import colors from './app/config/colors';
 // import default app text
 import AppText from './app/components/AppText';
-import HomeScreen from './app/screens/HomeScreen';
+// import HomeScreen from './app/screens/HomeScreen';
+import HomeScreen from './app/screens/HomeScreen'
+
+function DetailsScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Details Screen</Text>
+    </View>
+  );
+}
+
+// create navigation bar
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    // Views for IOS and Androids
-    <SafeAreaView style={styles.container}>
-      <HomeScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }} />
+        <Drawer.Screen name="Details" component={DetailsScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -20,7 +39,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.primary,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0, // set view below status bar for androids
   },
   text: {
     color: colors.secondary,
