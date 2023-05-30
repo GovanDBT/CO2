@@ -10,7 +10,8 @@ import colors from './app/config/colors';
 // import default app text
 import AppText from './app/components/AppText';
 // import HomeScreen from './app/screens/HomeScreen';
-import HomeScreen from './app/screens/HomeScreen'
+import HomeScreen from './app/screens/HomeScreen';
+import { DrawerContent } from './app/components/DrawerContent';
 
 function DetailsScreen() {
   return (
@@ -27,7 +28,16 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator 
+        initialRouteName="Home" 
+        drawerContent={props => <DrawerContent {...props}/>} 
+        screenOptions={{ 
+          headerStyle: { backgroundColor: colors.accent, elevation: 0, shadowOpacity: 0},
+          headerTintColor: colors.white,
+          headerTitleStyle: { fontWeight: 'bold', },
+          headerShadowVisible: 'none',
+
+        }}>
         <Drawer.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }} />
         <Drawer.Screen name="Details" component={DetailsScreen} />
       </Drawer.Navigator>
