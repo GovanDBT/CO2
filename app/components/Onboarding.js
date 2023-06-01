@@ -1,5 +1,5 @@
 import React, {useState, useRef } from 'react';
-import { Text, View, StyleSheet, FlatList, Animated } from 'react-native';
+import { Text, View, StyleSheet, FlatList, Animated, TouchableOpacity } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 
 import OnboardingItem from './OnboardingItem';
@@ -69,15 +69,26 @@ function Onboarding(props) {
     // slide needs to be 50% on screen before changing to next slide
     const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50}).current;
 
-    
+    // const shareContents = async() => {
+    //     const shareOptions = {
+    //         message: "This is my message",
+    //     }
+
+    //     try {
+    //         const shareResponse = await share.open(shareOptions);
+    //     } catch(error) {
+    //         console.log('Error => ', error);
+    //     }
+    // };
+
     return (
         <View style={styles.container}>
-            <View style={styles.airs}>
-                <Text>CO2</Text>
-                <Text>CH4</Text>
-                <Text>H2O</Text>
-                <Text>O2</Text>
-            </View>
+            <TouchableOpacity style={styles.shareButton}>
+                <FontAwesome5 name="share" size={25} color={'white'} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.chartButton}>
+                <FontAwesome5 name="chart-line" size={25} color={'white'} />
+            </TouchableOpacity>
             <View >
                 <FlatList data={slide} renderItem={({ item }) => <OnboardingItem item={item}/>} horizontal showsHorizontalScrollIndicator={false} pagingEnabled bounces={false} keyExtractor={(item) => item.id} onScroll={ Animated.event([{ nativeEvent: {contentOffset: { x: scrollX } } }], { useNativeDriver: false, }) }  onViewableItemsChanged={viewableItemsChanged} viewabilityConfig={ viewConfig } scrollEventThrottle={32} ref={slidesRef} />
             </View>
@@ -111,22 +122,39 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         position: 'absolute',
         justifyContent: 'flex-end',
+        top: 20,
+        marginBottom: 100,
+    },
+    chartButton: {
+        backgroundColor: colors.secondary,
+        padding: 10,
+        borderRadius: 100,
+        position: 'absolute',
+        bottom: 15,
+        right: 12,
     },
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 20,
-        borderWidth: 2,
     },
     select: {
         position: 'absolute',
         left: 10,
-        bottom: 20,
+        bottom: 15,
     },
     selectItem: {
         color: colors.white,
         position: 'absolute',
+    },
+    shareButton: {
+        backgroundColor: colors.secondary,
+        padding: 10,
+        borderRadius: 100,
+        position: 'absolute',
+        top: 15,
+        right: 12,
     },
 });
 
