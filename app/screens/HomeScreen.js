@@ -14,6 +14,9 @@ import AppButton from '../components/AppButton';
 import Onboarding from '../components/Onboarding';
 // import the screen
 import Screen from './Screen';
+// import the AI component
+import AI from '../components/AI';
+import RegionSection from './RegionSection';
 
 function HomeScreen({ navigation }) {
   const [selected, setSelected] = useState("");
@@ -30,19 +33,12 @@ function HomeScreen({ navigation }) {
 
     return (
       <Screen>
-        <View style={styles.nav}>
-                
-                <TouchableOpacity style={styles.aiIcon}>
-                    <Image style={styles.watson} source={require('../../assets/watsonWhite.png')} />
-                </TouchableOpacity>
-
-                <View style={styles.search}></View> 
-            </View>
+        <AI />
         <View style={styles.buttonView}>
-          <AppButton title="Global" onPress={() => console.log("Tapped Global")} color='secondary' textColor='white' icon="globe-africa" iconColor="#fff" />
-          <AppButton title="My Region" onPress={() => navigation.navigate('Regional')} icon="map-marker-alt" />
+          <AppButton title="Global" onPress={() => navigation.navigate('Home')} color='secondary' textColor='white' icon="globe-africa" iconColor="#fff" />
+          <AppButton title="My Region" onPress={() => navigation.navigate('Region')} icon="map-marker-alt" />
         </View>
-
+        
         <Onboarding />
 
         <View style={styles.select}>
@@ -117,7 +113,6 @@ function HomeScreen({ navigation }) {
     );
 }
 
-
 const styles = StyleSheet.create({
   select: {
     marginBottom: 30,
@@ -129,37 +124,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
   },
-  nav: {
-    flex: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'yellow',
-  },
-  search: {
-    backgroundColor: '#fff', 
-    borderRadius: 30,
-    width: 245,
-    height: 35,
-    justifyContent: 'center',   
-  },
-  aiIcon: {
-    backgroundColor: colors.secondary,
-    padding: 8,
-    borderRadius: 30,
-    marginLeft: 4,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.white,
-  },
-  watson: {
-    height: 35,
-    width: 35,
-  }
+  
+  
+  
+  
 })
 
 export default HomeScreen;

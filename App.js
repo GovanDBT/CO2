@@ -12,6 +12,7 @@ import AppText from './app/components/AppText';
 // import HomeScreen from './app/screens/HomeScreen';
 import HomeScreen from './app/screens/HomeScreen';
 import { DrawerContent } from './app/components/DrawerContent';
+import RegionSection from './app/screens/RegionSection';
 
 function DetailsScreen() {
   return (
@@ -38,8 +39,9 @@ export default function App() {
           headerShadowVisible: 'none',
 
         }}>
-        <Drawer.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }} />
+        <Drawer.Screen name="Home" component={HomeScreen} options={{ title: 'Overview - Global' }} />
         <Drawer.Screen name="Details" component={DetailsScreen} />
+        <Drawer.Screen name="Region" component={RegionSection} options={{ title: 'Overview - Regional' }} />
         
       </Drawer.Navigator>
     </NavigationContainer>
