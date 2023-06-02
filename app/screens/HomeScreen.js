@@ -16,7 +16,6 @@ import Onboarding from '../components/Onboarding';
 import Screen from './Screen';
 // import the AI component
 import AI from '../components/AI';
-import RegionSection from './RegionSection';
 
 function HomeScreen({ navigation }) {
   const [selected, setSelected] = useState("");

@@ -83,7 +83,6 @@ function Onboarding(props) {
 
     return (
         <View style={styles.container}>
-            <Text>Hello There</Text>
             <TouchableOpacity style={styles.shareButton} onPress={() => console.log("Tapped Share")}>
                 <FontAwesome5 name="share" size={25} color={'white'} />
             </TouchableOpacity>

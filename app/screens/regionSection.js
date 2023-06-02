@@ -16,7 +16,6 @@ import Onboarding from '../components/Onboarding';
 import Screen from './Screen';
 // import the AI component
 import AI from '../components/AI';
-import HomeScreen from './HomeScreen';
 
 function RegionSection({ navigation }) {
   const [selected, setSelected] = useState("");
@@ -31,115 +30,108 @@ function RegionSection({ navigation }) {
       {key:'7', value:'Drinks'},
   ];
 
-    return (
-      <Screen>
-        <AI />
-        <View style={styles.buttonView}>
-          <AppButton title="Global" onPress={() => navigation.navigate('Home')} icon="globe-africa" />
-          <AppButton title="My Region" onPress={() => navigation.navigate('Region')} color='secondary' textColor='white' iconColor="#fff" icon="map-marker-alt" />
-        </View>
+  return (
+    <Screen>
+      {/** AI Component */}
+      <AI />
 
-        <View>
-            <TouchableOpacity style={styles.locationButton} onPress={() => console.log("Tapped Share")}>
-                <FontAwesome5 name="share" size={18} color={'white'} />
-            </TouchableOpacity>
+      {/** Global and My Region Buttons */}
+      <View style={styles.buttonView}>
+        <AppButton title="Global" onPress={() => navigation.navigate('Home')} icon="globe-africa" />
+        <AppButton title="My Region" onPress={() => navigation.navigate('Region')} color='secondary' textColor='white' iconColor="#fff" icon="map-marker-alt" />
+      </View>
 
-            <View >
-          <SelectList 
-                    setSelected={(val) => setSelected(val)} 
-                    data={data}
-                    placeholder='Select your Region'
-                    save="value"
-                    arrowicon={<FontAwesome5 name="caret-down" size={20} color={'white'} />}
-                    boxStyles={{backgroundColor: colors.secondary, borderColor: 0, color: colors.white, width: 95, height: 45,}}
-                    inputStyles={{color: colors.white, fontWeight: 'bold', }}
-                    dropdownStyles={{backgroundColor: colors.accent, borderColor: 0, width: 95,}}
-                    dropdownTextStyles={{color: colors.white, }}
-                    searchPlaceholderStyles={{color: colors.white}}
-                    search={false}
-                />
-        </View>
+      {/** Drop down list for users to select their region */}
+      <SelectList 
+        setSelected={(val) => setSelected(val)} 
+        data={data}
+        placeholder='Select your Region'
+        save="value"
+        arrowicon={<FontAwesome5 name="caret-down" size={20} color={colors.primary} />}
+        boxStyles={{backgroundColor: colors.white, borderColor: 0, height: 45, justifyContent: 'center', margin: 10, }}
+        inputStyles={{color: colors.primary, fontWeight: 'bold', marginHorizontal: 10, }}
+        dropdownStyles={{backgroundColor: colors.accent, borderColor: 0, marginTop: 2,}}
+        dropdownTextStyles={{color: colors.white, }}
+        searchPlaceholderStyles={{color: colors.primary}}
+        searchPlaceholder="Search your region"
+      />
 
-            
-        </View>
+      {/** The slider */}
+      <Onboarding />
+      
+      {/** The activities drop down menu */}
+      <View style={styles.select}>
+        {!!selected && (<Text>Selected Value: {selected} </Text>)}
+        <SelectList 
+          setSelected={(val) => setSelected(val)} 
+          data={data}
+          save="value"
+          placeholder='Activities'
+          arrowicon={<FontAwesome5 name="caret-down" size={20} color={'white'} />}
+          closeicon={<FontAwesome5 name="times" size={20} color={'white'} />}
+          boxStyles={{backgroundColor: colors.accent, borderColor: colors.primary, borderStartWidth: 3, borderStartColor: colors.secondary, color: colors.white }}
+          inputStyles={{color: colors.white, fontWeight: 'bold'}}
+          dropdownStyles={{backgroundColor: colors.accent, borderColor: 0,}}
+          dropdownTextStyles={{color: colors.white, }}
+          searchPlaceholderStyles={{color: colors.white}}
+        />
+      </View>
+      
+      {/** The companies drop down menu */}
+      <View style={styles.select}>
+        {!!selected && (<Text>Selected Value: {selected} </Text>)}
+        <SelectList 
+          setSelected={(val) => setSelected(val)} 
+          data={data}
+          save="value"
+          placeholder='Companies'
+          arrowicon={<FontAwesome5 name="caret-down" size={20} color={'white'} />}
+          closeicon={<FontAwesome5 name="times" size={20} color={'white'} />}
+          boxStyles={{backgroundColor: colors.accent, borderColor: colors.primary, borderStartWidth: 3, borderStartColor: colors.secondary, color: colors.white }}
+          inputStyles={{color: colors.white, fontWeight: 'bold'}}
+          dropdownStyles={{backgroundColor: colors.accent, borderColor: 0,}}
+          dropdownTextStyles={{color: colors.white, }}
+          searchPlaceholderStyles={{color: colors.white}}
+        />
+      </View>
 
-        <Onboarding />
+      {/** The products drop down menu */}
+      <View style={styles.select}>
+        {!!selected && (<Text>Selected Value: {selected} </Text>)}
+        <SelectList 
+          setSelected={(val) => setSelected(val)} 
+          data={data}
+          save="value"
+          placeholder='Products'
+          arrowicon={<FontAwesome5 name="caret-down" size={20} color={'white'} />}
+          closeicon={<FontAwesome5 name="times" size={20} color={'white'} />}
+          boxStyles={{backgroundColor: colors.accent, borderColor: colors.primary, borderStartWidth: 3, borderStartColor: colors.secondary, color: colors.white }}
+          inputStyles={{color: colors.white, fontWeight: 'bold'}}
+          dropdownStyles={{backgroundColor: colors.accent, borderColor: 0,}}
+          dropdownTextStyles={{color: colors.white, }}
+          searchPlaceholderStyles={{color: colors.white}}
+        />
+      </View>
 
-        <View style={styles.select}>
-          {!!selected && (<Text>Selected Value: {selected} </Text>)}
-          <SelectList 
-            setSelected={(val) => setSelected(val)} 
-            data={data}
-            save="value"
-            placeholder='Activities'
-            arrowicon={<FontAwesome5 name="caret-down" size={20} color={'white'} />}
-            closeicon={<FontAwesome5 name="times" size={20} color={'white'} />}
-            boxStyles={{backgroundColor: colors.accent, borderColor: colors.primary, borderStartWidth: 3, borderStartColor: colors.secondary, color: colors.white }}
-            inputStyles={{color: colors.white, fontWeight: 'bold'}}
-            dropdownStyles={{backgroundColor: colors.accent, borderColor: 0,}}
-            dropdownTextStyles={{color: colors.white, }}
-            searchPlaceholderStyles={{color: colors.white}}
-          />
-        </View>
-
-        <View style={styles.select}>
-          {!!selected && (<Text>Selected Value: {selected} </Text>)}
-          <SelectList 
-            setSelected={(val) => setSelected(val)} 
-            data={data}
-            save="value"
-            placeholder='Companies'
-            arrowicon={<FontAwesome5 name="caret-down" size={20} color={'white'} />}
-            closeicon={<FontAwesome5 name="times" size={20} color={'white'} />}
-            boxStyles={{backgroundColor: colors.accent, borderColor: colors.primary, borderStartWidth: 3, borderStartColor: colors.secondary, color: colors.white }}
-            inputStyles={{color: colors.white, fontWeight: 'bold'}}
-            dropdownStyles={{backgroundColor: colors.accent, borderColor: 0,}}
-            dropdownTextStyles={{color: colors.white, }}
-            searchPlaceholderStyles={{color: colors.white}}
-          />
-        </View>
-
-        <View style={styles.select}>
-          {!!selected && (<Text>Selected Value: {selected} </Text>)}
-          <SelectList 
-            setSelected={(val) => setSelected(val)} 
-            data={data}
-            save="value"
-            placeholder='Products'
-            arrowicon={<FontAwesome5 name="caret-down" size={20} color={'white'} />}
-            closeicon={<FontAwesome5 name="times" size={20} color={'white'} />}
-            boxStyles={{backgroundColor: colors.accent, borderColor: colors.primary, borderStartWidth: 3, borderStartColor: colors.secondary, color: colors.white }}
-            inputStyles={{color: colors.white, fontWeight: 'bold'}}
-            dropdownStyles={{backgroundColor: colors.accent, borderColor: 0,}}
-            dropdownTextStyles={{color: colors.white, }}
-            searchPlaceholderStyles={{color: colors.white}}
-          />
-        </View>
-
-      </Screen>
-    );
+    </Screen>
+  );
 }
 
 const styles = StyleSheet.create({
-    locationButton: {
-        backgroundColor: colors.secondary,
-        padding: 10,
-        borderRadius: 100,
-    },
-  select: {
-    marginBottom: 30,
-  },
   buttonView: {
     flex: 0,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    borderWidth: 1,
   },
-  
-  
-  
-  
+  locationButton: {
+    backgroundColor: colors.secondary,
+    padding: 10,
+    borderRadius: 100,
+  },
+  select: {
+    marginBottom: 30,
+  },
 })
 
 export default RegionSection;
