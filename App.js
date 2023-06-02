@@ -45,8 +45,8 @@ export default function App() {
 
         }}>
         {/** Side drawer lists */}
-        <Drawer.Screen name="Home" component={GlobalScreen} options={{ title: 'Overview - Global' }} />
-        <Drawer.Screen name="Region" component={RegionScreen} options={{ title: 'Overview - Regional' }} />
+        <Drawer.Screen name="Home" component={GlobalScreen} options={{ title: 'Overview' }} />
+        <Drawer.Screen name="Region" component={RegionScreen} options={{ title: 'Overview' }} />
         <Drawer.Screen name="Footprint" component={CarbonFootprintScreen} options={{ title: 'My Carbon Footprint' }} />
         <Drawer.Screen name="Emission" component={CarbonEmissionScreen} options={{ title: 'Carbon Emission' }} />
         <Drawer.Screen name="Goals" component={GoalScreen} />
