@@ -83,13 +83,14 @@ function Onboarding(props) {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.shareButton}>
+            <Text>Hello There</Text>
+            <TouchableOpacity style={styles.shareButton} onPress={() => console.log("Tapped Share")}>
                 <FontAwesome5 name="share" size={25} color={'white'} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.chartButton}>
+            <TouchableOpacity style={styles.chartButton} onPress={() => console.log("Tapped Chart")}>
                 <FontAwesome5 name="chart-line" size={25} color={'white'} />
             </TouchableOpacity>
-            <View >
+            <View style={styles.slider}>
                 <FlatList data={slide} renderItem={({ item }) => <OnboardingItem item={item}/>} horizontal showsHorizontalScrollIndicator={false} pagingEnabled bounces={false} keyExtractor={(item) => item.id} onScroll={ Animated.event([{ nativeEvent: {contentOffset: { x: scrollX } } }], { useNativeDriver: false, }) }  onViewableItemsChanged={viewableItemsChanged} viewabilityConfig={ viewConfig } scrollEventThrottle={32} ref={slidesRef} />
             </View>
             <Paginator data={slide} scrollX={scrollX} />
@@ -132,12 +133,15 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 15,
         right: 12,
+        zIndex: 1,
     },
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 20,
+        borderWidth: 1,
+        borderColor: 'red',
     },
     select: {
         position: 'absolute',
@@ -155,6 +159,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 15,
         right: 12,
+        zIndex: 1,
+    },
+    slider: {
+        height: 340,
     },
 });
 

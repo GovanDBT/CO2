@@ -40,8 +40,10 @@ export default function App() {
         }}>
         <Drawer.Screen name="Home" component={HomeScreen} options={{ title: 'Overview' }} />
         <Drawer.Screen name="Details" component={DetailsScreen} />
+        
       </Drawer.Navigator>
     </NavigationContainer>
+    
   );
 }
 

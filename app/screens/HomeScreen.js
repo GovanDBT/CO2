@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, ScrollView, Text, SafeAreaView, Image } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // import colors were using
 import colors from '../config/colors';
@@ -13,7 +15,7 @@ import Onboarding from '../components/Onboarding';
 // import the screen
 import Screen from './Screen';
 
-function HomeScreen(props) {
+function HomeScreen({ navigation }) {
   const [selected, setSelected] = useState("");
   
   const data = [
@@ -38,7 +40,7 @@ function HomeScreen(props) {
             </View>
         <View style={styles.buttonView}>
           <AppButton title="Global" onPress={() => console.log("Tapped Global")} color='secondary' textColor='white' icon="globe-africa" iconColor="#fff" />
-          <AppButton title="My Region" onPress={() => console.log("Tapped Regional")} icon="map-marker-alt" />
+          <AppButton title="My Region" onPress={() => navigation.navigate('Regional')} icon="map-marker-alt" />
         </View>
 
         <Onboarding />
@@ -115,6 +117,7 @@ function HomeScreen(props) {
     );
 }
 
+
 const styles = StyleSheet.create({
   select: {
     marginBottom: 30,
@@ -124,6 +127,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    borderWidth: 1,
   },
   nav: {
     flex: 0,
@@ -132,6 +136,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'yellow',
   },
   search: {
     backgroundColor: '#fff', 

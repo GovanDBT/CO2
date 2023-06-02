@@ -53,17 +53,16 @@ const styles = StyleSheet.create({
         width: 200,
     },
     container: {
-        flex: 0,
+        borderWidth: 2,
+        borderColor: 'blue',
         justifyContent: 'center',
         alignItems: 'center',
     },
     image: {
-        flex: 0,
         justifyContent: 'center',
         alignItems: 'center',
         width: 300,
         height: 300,
-        marginVertical: 20,
     },
     label: {
         position: 'absolute',
