@@ -17,7 +17,7 @@ import Screen from './Screen';
 // import the AI component
 import AI from '../components/AI';
 
-function HomeScreen({ navigation }) {
+function GlobalScreen({ navigation }) {
   const [selected, setSelected] = useState("");
   
   const data = [
@@ -129,4 +129,4 @@ const styles = StyleSheet.create({
   
 })
 
-export default HomeScreen;
+export default GlobalScreen;

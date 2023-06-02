@@ -35,19 +35,19 @@ export function DrawerContent(props) {
                 icon={({color, size}) => ( <FontAwesome5  name="shoe-prints" size={20} color="#fff"/> )}
                 label={ () => ( <Text style={styles.labelText}>My Carbon footprint</Text>) }
                 active={active === 'Details'}
-                onPress={() => {props.navigation.navigate('Details')}}
+                onPress={() => {props.navigation.navigate('Footprint')}}
             />
             <DrawerItem
                 style={styles.text}
                 icon={({color, size}) => ( <FontAwesome5  name="smog" size={20} color="#fff"/> )}
                 label={ () => ( <Text style={styles.labelText}>Carbon Emission</Text>) }
-                onPress={() => {props.navigation.navigate('')}}
+                onPress={() => {props.navigation.navigate('Emission')}}
             />
             <DrawerItem
                 style={styles.text}
                 icon={({color, size}) => ( <FontAwesome5  name="globe-africa" size={20} color="#fff"/> )}
                 label={ () => ( <Text style={styles.labelText}>UN Goal</Text>) }
-                onPress={() => {props.navigation.navigate('')}}
+                onPress={() => {props.navigation.navigate('Goals')}}
             />
           </Drawer.Section>
           <Drawer.Section style={styles.drawerSection} >
@@ -55,19 +55,19 @@ export function DrawerContent(props) {
                 style={styles.text}
                 icon={({color, size}) => ( <FontAwesome5  name="info-circle" size={20} color="#fff"/> )}
                 label={ () => ( <Text style={styles.labelText}>About</Text>) }
-                onPress={() => {props.navigation.navigate('')}}
+                onPress={() => {props.navigation.navigate('About')}}
             />
             <DrawerItem
                 style={styles.text}
                 icon={({color, size}) => ( <FontAwesome5  name="reply" size={20} color="#fff"/> )}
                 label={ () => ( <Text style={styles.labelText}>Contact</Text>) }
-                onPress={() => {props.navigation.navigate('')}}
+                onPress={() => {props.navigation.navigate('Contact')}}
             />
             <DrawerItem
                 style={styles.text}
                 icon={({color, size}) => ( <FontAwesome5  name="cog" size={20} color="#fff"/> )}
                 label={ () => ( <Text style={styles.labelText}>Settings</Text>) }
-                onPress={() => {props.navigation.navigate('')}}
+                onPress={() => {props.navigation.navigate('Settings')}}
             />
           </Drawer.Section>
           

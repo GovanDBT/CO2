@@ -7,28 +7,33 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 // import colors were using
 import colors from './app/config/colors';
-// import default app text
-import AppText from './app/components/AppText';
-// import HomeScreen from './app/screens/HomeScreen';
-import HomeScreen from './app/screens/HomeScreen';
+// import custom drawer
 import { DrawerContent } from './app/components/DrawerContent';
-import RegionSection from './app/screens/RegionSection';
+// imports the global screen (default screen)
+import GlobalScreen from './app/screens/GlobalScreen';
+// import the region screen
+import RegionScreen from './app/screens/RegionScreen';
+// import my carbon footprint screen
+import CarbonFootprintScreen from './app/screens/CarbonFootprintScreen';
+// import the carbon emission screen
+import CarbonEmissionScreen from './app/screens/CarbonEmissionScreen';
+// import the goals screen
+import GoalScreen from './app/screens/GoalScreen';
+// import about screen
+import AboutScreen from './app/screens/AboutScreen';
+// import contact screen
+import ContactScreen from './app/screens/ContactScreen';
+// import settings screen
+import SettingsScreen from './app/screens/SettingsScreen';
 
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
 
 // create navigation bar
-const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
+      {/** Side drawer that allows users to navigate to other pages */}
       <Drawer.Navigator 
         initialRouteName="Home" 
         drawerContent={props => <DrawerContent {...props}/>} 
@@ -39,22 +44,18 @@ export default function App() {
           headerShadowVisible: 'none',
 
         }}>
-        <Drawer.Screen name="Home" component={HomeScreen} options={{ title: 'Overview - Global' }} />
-        <Drawer.Screen name="Details" component={DetailsScreen} />
-        <Drawer.Screen name="Region" component={RegionSection} options={{ title: 'Overview - Regional' }} />
+        {/** Side drawer lists */}
+        <Drawer.Screen name="Home" component={GlobalScreen} options={{ title: 'Overview - Global' }} />
+        <Drawer.Screen name="Region" component={RegionScreen} options={{ title: 'Overview - Regional' }} />
+        <Drawer.Screen name="Footprint" component={CarbonFootprintScreen} options={{ title: 'My Carbon Footprint' }} />
+        <Drawer.Screen name="Emission" component={CarbonEmissionScreen} options={{ title: 'Carbon Emission' }} />
+        <Drawer.Screen name="Goals" component={GoalScreen} />
+        <Drawer.Screen name="About" component={AboutScreen} />
+        <Drawer.Screen name="Contact" component={ContactScreen} />
+        <Drawer.Screen name="Settings" component={SettingsScreen} />
         
       </Drawer.Navigator>
     </NavigationContainer>
     
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.primary,
-  },
-  text: {
-    color: colors.secondary,
-  },
-});

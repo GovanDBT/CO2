@@ -17,7 +17,7 @@ import Screen from './Screen';
 // import the AI component
 import AI from '../components/AI';
 
-function RegionSection({ navigation }) {
+function RegionScreen({ navigation }) {
   const [selected, setSelected] = useState("");
   
   const data = [
@@ -134,4 +134,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default RegionSection;
+export default RegionScreen;
