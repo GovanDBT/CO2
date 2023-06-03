@@ -1,5 +1,5 @@
 /** Slider Items */
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Image, useWindowDimensions, Share, TouchableOpacity } from 'react-native';
 
 // import custom colors
@@ -31,25 +31,40 @@ function SliderItem({item}) {
         alert(error.message);
         }
     };
+
+    const [shouldShow, setShouldShow] = useState(true);
     return (
         <View style={[styles.container, { width }]}>
             <TouchableOpacity style={styles.shareButton} onPress={onShare}>
                 <FontAwesome5 name="share" size={25} color={'white'} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.chartButton} onPress={() => console.log("Tapped Chart")}>
-                <FontAwesome5 name="chart-line" size={25} color={'white'} />
+            <TouchableOpacity style={styles.chartButton} onPress={() => setShouldShow(!shouldShow)}>
+                {shouldShow ? (
+                    <FontAwesome5 name="chart-line" size={25} color={'white'} />
+                ): <FontAwesome5 name="weight-hanging" size={25} color={'white'} />}
             </TouchableOpacity>
-            <Image source={item.image} style={styles.image} />
-            <AppText style={styles.caption}>{item.caption}</AppText>
-            <View style={styles.label}>
-                <AppText style={styles.title}>{item.title}</AppText>
-                <AppText style={styles.amount}>{item.amount}</AppText>
-                <AppText style={styles.person}>{item.person}</AppText>
-                <View style={styles.approximate}>
-                    <FontAwesome5  name={item.icon} size={22} color="#fff"/>
-                    <AppText style={styles.approx}>{item.approx}</AppText>
+            {shouldShow ? (
+                <View style={styles.container}>
+                <Image source={item.image} style={styles.image} />
+                <AppText style={styles.caption}>{item.caption}</AppText>
+                <View style={styles.label}>
+                    <AppText style={styles.title}>{item.title}</AppText>
+                    <AppText style={styles.amount}>{item.amount}</AppText>
+                    <AppText style={styles.person}>{item.person}</AppText>
+                    <View style={styles.approximate}>
+                        <FontAwesome5  name={item.icon} size={22} color="#fff"/>
+                        <AppText style={styles.approx}>{item.approx}</AppText>
+                    </View>
                 </View>
             </View>
+            ) : <Image
+            source={{
+              uri:
+                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
+            }}
+            style={{ width: 250, height: 250 }}
+          />}
+            
         </View>
     );
 }
@@ -95,18 +110,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     image: {
-        justifyContent: 'center',
-        alignItems: 'center',
         width: 300,
         height: 300,
+        marginLeft: 22,
     },
     label: {
         position: 'absolute',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 30,
-        paddingRight: 18,
+        paddingTop: 40,
     },
     person: {
         color: colors.white,
