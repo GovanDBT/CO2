@@ -11,7 +11,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 // import custom buttons
 import AppButton from '../components/AppButton';
 // import slide
-import Onboarding from '../components/Onboarding';
+import Slider from '../components/Slider';
 // import the screen
 import Screen from './Screen';
 // import the AI component
@@ -38,7 +38,7 @@ function GlobalScreen({ navigation }) {
           <AppButton title="My Region" onPress={() => navigation.navigate('Region')} icon="map-marker-alt" />
         </View>
         
-        <Onboarding />
+        <Slider />
 
         <View style={styles.select}>
           {!!selected && (<Text>Selected Value: {selected} </Text>)}
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    borderWidth: 1,
+    marginBottom: 10,
   },
   
   

@@ -7,10 +7,10 @@ import colors from '../config/colors';
 // import react icons
 import { FontAwesome5 } from '@expo/vector-icons';
 
-function AppButton({title, onPress, color= "white", textColor="primary", icon, iconColor="#282c34"}) {
+function AppButton({title, onPress, color= "white", textColor="primary", icon, iconColor="#282c34", style}) {
     return (
         // give feedback whenever we press a button
-        <TouchableOpacity style={[styles.button, {backgroundColor: colors[color]}]} onPress={onPress}>
+        <TouchableOpacity style={[styles.button, {backgroundColor: colors[color]}, style]} onPress={onPress}>
             <FontAwesome5  name={icon} size={18} color={iconColor}/>
             <Text style={[styles.text, {color: colors[textColor]}]}>{title}</Text>
         </TouchableOpacity>
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        
     },
     text: {
         color: colors.primary,

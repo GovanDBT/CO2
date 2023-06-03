@@ -1,15 +1,44 @@
+/** Slider Items */
 import React from 'react';
-import { Text, View, StyleSheet, Image, useWindowDimensions } from 'react-native';
+import { View, StyleSheet, Image, useWindowDimensions, Share, TouchableOpacity } from 'react-native';
 
+// import custom colors
 import colors from '../config/colors';
+// import custom text
 import AppText from './AppText';
-// import react icons
+// import react-native icons
 import { FontAwesome5 } from '@expo/vector-icons';
 
-function Onboarding({item}) {
+function SliderItem({item}) {
     const { width } = useWindowDimensions();
+
+    {/** When a user wants to share the content of the app */}
+    const onShare = async () => {
+        try {
+        const result = await Share.share({
+            message: 'Instagram | A time wasting application',
+        });
+        if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+            // shared with activity type of result.activityType
+            } else {
+            // shared
+            }
+        } else if (result.action === Share.dismissedAction) {
+            // dismissed
+        }
+        } catch (error) {
+        alert(error.message);
+        }
+    };
     return (
         <View style={[styles.container, { width }]}>
+            <TouchableOpacity style={styles.shareButton} onPress={onShare}>
+                <FontAwesome5 name="share" size={25} color={'white'} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.chartButton} onPress={() => console.log("Tapped Chart")}>
+                <FontAwesome5 name="chart-line" size={25} color={'white'} />
+            </TouchableOpacity>
             <Image source={item.image} style={styles.image} />
             <AppText style={styles.caption}>{item.caption}</AppText>
             <View style={styles.label}>
@@ -52,9 +81,16 @@ const styles = StyleSheet.create({
         color: colors.white,
         width: 200,
     },
+    chartButton: {
+        backgroundColor: colors.secondary,
+        padding: 10,
+        borderRadius: 100,
+        position: 'absolute',
+        bottom: 5,
+        right: 10,
+        zIndex: 1,
+    },
     container: {
-        borderWidth: 2,
-        borderColor: 'blue',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -78,6 +114,15 @@ const styles = StyleSheet.create({
         fontSize: 12,
         marginBottom: 20,
     },
+    shareButton: {
+        backgroundColor: colors.secondary,
+        padding: 10,
+        borderRadius: 100,
+        position: 'absolute',
+        top: 25,
+        right: 10,
+        zIndex: 1,
+    },
     title: {
         color: colors.white,
         fontWeight: 'bold',
@@ -85,4 +130,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Onboarding;
+export default SliderItem;

@@ -11,7 +11,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 // import custom buttons
 import AppButton from '../components/AppButton';
 // import slide
-import Onboarding from '../components/Onboarding';
+import Slider from '../components/Slider';
 // import the screen
 import Screen from './Screen';
 // import the AI component
@@ -57,7 +57,7 @@ function RegionScreen({ navigation }) {
       />
 
       {/** The slider */}
-      <Onboarding />
+      <Slider />
       
       {/** The activities drop down menu */}
       <View style={styles.select}>

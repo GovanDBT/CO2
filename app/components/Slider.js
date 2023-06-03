@@ -1,17 +1,22 @@
+/** Horizontal slider component with slider items */
 import React, {useState, useRef } from 'react';
-import { Text, View, StyleSheet, FlatList, Animated, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, FlatList, Animated } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list';
 
-import OnboardingItem from './OnboardingItem';
+// import slider items component (allows us to render items in the slider)
+import SliderItem from './SliderItem';
+// import paginator (round scroll indicators below the slider)
 import Paginator from './Paginator';
+// import next button component (slides to next slider item)
 import NextButton from './NextButton';
+// import previous button component (slides to previous slider item)
 import PrevButton from './PrevButton';
 // import react icons
 import { FontAwesome5 } from '@expo/vector-icons';
 // import colors were using
 import colors from '../config/colors';
 
-function Onboarding(props) {
+function Slider(props) {
     // holds the currently view index
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollX = useRef(new Animated.Value(0)).current;
@@ -69,28 +74,12 @@ function Onboarding(props) {
     // slide needs to be 50% on screen before changing to next slide
     const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50}).current;
 
-    // const shareContents = async() => {
-    //     const shareOptions = {
-    //         message: "This is my message",
-    //     }
-
-    //     try {
-    //         const shareResponse = await share.open(shareOptions);
-    //     } catch(error) {
-    //         console.log('Error => ', error);
-    //     }
-    // };
+    
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.shareButton} onPress={() => console.log("Tapped Share")}>
-                <FontAwesome5 name="share" size={25} color={'white'} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.chartButton} onPress={() => console.log("Tapped Chart")}>
-                <FontAwesome5 name="chart-line" size={25} color={'white'} />
-            </TouchableOpacity>
             <View style={styles.slider}>
-                <FlatList data={slide} renderItem={({ item }) => <OnboardingItem item={item}/>} horizontal showsHorizontalScrollIndicator={false} pagingEnabled bounces={false} keyExtractor={(item) => item.id} onScroll={ Animated.event([{ nativeEvent: {contentOffset: { x: scrollX } } }], { useNativeDriver: false, }) }  onViewableItemsChanged={viewableItemsChanged} viewabilityConfig={ viewConfig } scrollEventThrottle={32} ref={slidesRef} />
+                <FlatList data={slide} renderItem={({ item }) => <SliderItem item={item}/>} horizontal showsHorizontalScrollIndicator={false} pagingEnabled bounces={false} keyExtractor={(item) => item.id} onScroll={ Animated.event([{ nativeEvent: {contentOffset: { x: scrollX } } }], { useNativeDriver: false, }) }  onViewableItemsChanged={viewableItemsChanged} viewabilityConfig={ viewConfig } scrollEventThrottle={32} ref={slidesRef} />
             </View>
             <Paginator data={slide} scrollX={scrollX} />
             <NextButton scrollTo={scrollTo}/>
@@ -125,22 +114,11 @@ const styles = StyleSheet.create({
         top: 20,
         marginBottom: 100,
     },
-    chartButton: {
-        backgroundColor: colors.secondary,
-        padding: 10,
-        borderRadius: 100,
-        position: 'absolute',
-        bottom: 15,
-        right: 12,
-        zIndex: 1,
-    },
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 20,
-        borderWidth: 1,
-        borderColor: 'red',
     },
     select: {
         position: 'absolute',
@@ -151,18 +129,9 @@ const styles = StyleSheet.create({
         color: colors.white,
         position: 'absolute',
     },
-    shareButton: {
-        backgroundColor: colors.secondary,
-        padding: 10,
-        borderRadius: 100,
-        position: 'absolute',
-        top: 15,
-        right: 12,
-        zIndex: 1,
-    },
     slider: {
         height: 340,
     },
 });
 
-export default Onboarding;
+export default Slider;
