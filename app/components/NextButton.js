@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 0,
         top: 160,
+        opacity: 0.7,
     }
 });
 

@@ -1,6 +1,7 @@
 /** Slider Items */
 import React, { useState } from 'react';
-import { View, StyleSheet, Image, useWindowDimensions, Share, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, useWindowDimensions, Share, TouchableOpacity, Text, Dimensions } from 'react-native';
+import { LineChart } from 'react-native-chart-kit';
 
 // import custom colors
 import colors from '../config/colors';
@@ -32,6 +33,17 @@ function SliderItem({item}) {
         }
     };
 
+    {/** Data for the line chart */}
+    const linedata = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [
+        {
+          data: [20, 45, 28, 80, 99, 43],
+          strokeWidth: 2, // optional
+        },
+      ],
+    };
+
     const [shouldShow, setShouldShow] = useState(true);
     return (
         <View style={[styles.container, { width }]}>
@@ -45,25 +57,46 @@ function SliderItem({item}) {
             </TouchableOpacity>
             {shouldShow ? (
                 <View style={styles.container}>
-                <Image source={item.image} style={styles.image} />
-                <AppText style={styles.caption}>{item.caption}</AppText>
-                <View style={styles.label}>
-                    <AppText style={styles.title}>{item.title}</AppText>
-                    <AppText style={styles.amount}>{item.amount}</AppText>
-                    <AppText style={styles.person}>{item.person}</AppText>
-                    <View style={styles.approximate}>
-                        <FontAwesome5  name={item.icon} size={22} color="#fff"/>
-                        <AppText style={styles.approx}>{item.approx}</AppText>
+                    <Image source={item.image} style={styles.image} />
+                    <AppText style={styles.caption}>{item.caption}</AppText>
+                    <View style={styles.label}>
+                        <AppText style={styles.title}>{item.title}</AppText>
+                        <AppText style={styles.amount}>{item.amount}</AppText>
+                        <AppText style={styles.person}>{item.person}</AppText>
+                        <View style={styles.approximate}>
+                            <FontAwesome5  name={item.icon} size={22} color="#fff"/>
+                            <AppText style={styles.approx}>{item.approx}</AppText>
+                        </View>
                     </View>
                 </View>
-            </View>
-            ) : <Image
-            source={{
-              uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
-            }}
-            style={{ width: 250, height: 250 }}
-          />}
+                ) :
+                <View>
+                    <Text style={styles.chartTitle}>
+                        Bezier Line Chart
+                    </Text>
+                    <LineChart
+                        data={linedata}
+                        width={Dimensions.get('window').width} // from react-native
+                        height={220}
+                        yAxisLabel={'$'}
+                        chartConfig={{
+                        backgroundColor: colors.accent,
+                        backgroundGradientFrom: colors.primary,
+                        backgroundGradientTo: colors.accent,
+                        decimalPlaces: 2, // optional, defaults to 2dp
+                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                        style: {
+                            borderRadius: 16,
+                        }
+                        }}
+                        bezier
+                        style={{
+                        marginVertical: 8,
+                        borderRadius: 16,
+                        }}
+                    />
+                </View>
+            }
             
         </View>
     );
@@ -104,6 +137,12 @@ const styles = StyleSheet.create({
         bottom: 5,
         right: 10,
         zIndex: 1,
+    },
+    chartTitle: {
+        color: colors.white,
+        fontSize: 12,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
     container: {
         justifyContent: 'center',
