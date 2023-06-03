@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     preference: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+      alignItems: 'center',
       paddingVertical: 10,
       paddingHorizontal: 16,
       color: colors.white,
