@@ -10,6 +10,7 @@ import AppButton from './AppButton';
 
 export default function AI() {
     const navigation = useNavigation();
+    
     return (
         <View style={styles.nav}>
             {/** Watson Assistant button */}    
