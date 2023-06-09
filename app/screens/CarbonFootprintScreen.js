@@ -1,7 +1,8 @@
 /** screen that allows user to calculate their carbon emission */
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Dimensions } from 'react-native'
 import { SelectList } from 'react-native-dropdown-select-list';
+import { LineChart } from 'react-native-chart-kit';
 
 // import the custom screen component
 import Screen from './Screen';
@@ -26,6 +27,18 @@ export default function CarbonFootprintScreen() {
       {key:'6', value:'Brazil'},
       {key:'7', value:'China'},
   ];
+
+  {/** Data for the line chart */}
+        const linedata = {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [
+            {
+              data: [20, 45, 28, 80, 99, 43],
+              strokeWidth: 2, // optional
+            },
+          ],
+        };
+
   return (
     <Screen>
       {/** screen title */}
@@ -94,6 +107,33 @@ export default function CarbonFootprintScreen() {
             </View>
           </View>
         </View>
+
+        <View style={styles.chart}>
+            <Text style={styles.chartTitle}>
+                My Carbon Footprint
+            </Text>
+            <LineChart
+                data={linedata}
+                width={Dimensions.get('window').width} // from react-native
+                height={220}
+                yAxisLabel={'$'}
+                chartConfig={{
+                backgroundColor: colors.accent,
+                backgroundGradientFrom: colors.primary,
+                backgroundGradientTo: colors.accent,
+                decimalPlaces: 2, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                style: {
+                    borderRadius: 16,
+                }
+                }}
+                bezier
+                style={{
+                marginVertical: 8,
+                borderRadius: 16,
+                }}
+            />
+        </View>
         
         <AppText style={styles.carbonTitle}> Average Emission Per Person (yearly)</AppText>
         <View style={styles.carbon}>
@@ -136,6 +176,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginHorizontal: 8,
   },
+  chart: {
+    marginVertical: 10,
+  },
+  chartTitle: {
+        color: colors.white,
+        fontSize: 12,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
   carbon: {
     paddingHorizontal: 10,
     flex: 1,

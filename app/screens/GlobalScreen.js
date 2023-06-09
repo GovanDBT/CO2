@@ -19,6 +19,16 @@ import AI from '../components/AI';
 
 function GlobalScreen({ navigation }) {
   const [selected, setSelected] = useState("");
+
+  const data1 = [
+      {key:'1', value:'Botswana'},
+      {key:'2', value:'Canada'},
+      {key:'3', value:'Angola'},
+      {key:'4', value:'England'},
+      {key:'5', value:'China'},
+      {key:'6', value:'Brazil'},
+      {key:'7', value:'USA'},
+  ];
   
   const data = [
       {key:'1', value:'Mobiles'},
@@ -44,7 +54,7 @@ function GlobalScreen({ navigation }) {
           {!!selected && (<Text>Selected Value: {selected} </Text>)}
           <SelectList 
             setSelected={(val) => setSelected(val)} 
-            data={data}
+            data={data1}
             save="value"
             placeholder='Countries'
             arrowicon={<FontAwesome5 name="caret-down" size={20} color={'white'} />}
@@ -58,7 +68,6 @@ function GlobalScreen({ navigation }) {
         </View>
 
         <View style={styles.select}>
-          {!!selected && (<Text>Selected Value: {selected} </Text>)}
           <SelectList 
             setSelected={(val) => setSelected(val)} 
             data={data}
@@ -75,7 +84,6 @@ function GlobalScreen({ navigation }) {
         </View>
 
         <View style={styles.select}>
-          {!!selected && (<Text>Selected Value: {selected} </Text>)}
           <SelectList 
             setSelected={(val) => setSelected(val)} 
             data={data}
@@ -92,7 +100,6 @@ function GlobalScreen({ navigation }) {
         </View>
 
         <View style={styles.select}>
-          {!!selected && (<Text>Selected Value: {selected} </Text>)}
           <SelectList 
             setSelected={(val) => setSelected(val)} 
             data={data}

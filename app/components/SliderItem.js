@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     amount: {
         color: colors.white,
         fontWeight: 'bold',
-        fontSize: 35,
+        fontSize: 32,
         marginVertical: 7,
     },
     approx: {

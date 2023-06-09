@@ -21,13 +21,23 @@ function RegionScreen({ navigation }) {
   const [selected, setSelected] = useState("");
   
   const data = [
-      {key:'1', value:'Mobiles'},
-      {key:'2', value:'Appliances'},
-      {key:'3', value:'Cameras'},
-      {key:'4', value:'Computers'},
-      {key:'5', value:'Vegetables'},
-      {key:'6', value:'Diary Products'},
-      {key:'7', value:'Drinks'},
+      {key:'1', value:'Botswana'},
+      {key:'2', value:'Canada'},
+      {key:'3', value:'Angola'},
+      {key:'4', value:'England'},
+      {key:'5', value:'China'},
+      {key:'6', value:'Brazil'},
+      {key:'7', value:'USA'},
+  ];
+
+  const data2 = [
+      {key:'1', value:'Hunting'},
+      {key:'2', value:'Farming'},
+      {key:'3', value:'Meat Production'},
+      {key:'4', value:'Power Production'},
+      {key:'5', value:'Traveling'},
+      {key:'6', value:'Tourism'},
+      {key:'7', value:'Sports'},
   ];
 
   return (
@@ -64,7 +74,7 @@ function RegionScreen({ navigation }) {
         {!!selected && (<Text>Selected Value: {selected} </Text>)}
         <SelectList 
           setSelected={(val) => setSelected(val)} 
-          data={data}
+          data={data2}
           save="value"
           placeholder='Activities'
           arrowicon={<FontAwesome5 name="caret-down" size={20} color={'white'} />}
@@ -79,7 +89,6 @@ function RegionScreen({ navigation }) {
       
       {/** The companies drop down menu */}
       <View style={styles.select}>
-        {!!selected && (<Text>Selected Value: {selected} </Text>)}
         <SelectList 
           setSelected={(val) => setSelected(val)} 
           data={data}
@@ -97,7 +106,6 @@ function RegionScreen({ navigation }) {
 
       {/** The products drop down menu */}
       <View style={styles.select}>
-        {!!selected && (<Text>Selected Value: {selected} </Text>)}
         <SelectList 
           setSelected={(val) => setSelected(val)} 
           data={data}
