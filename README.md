@@ -14,10 +14,13 @@ The reason why most people are unaware about the impact carbon emission has on o
 ### IBM AI service(s) used
 ### Our IBM technology used
 ### Solution architecture
+![Blank diagram](https://github.com/GovanDBT/CO2/assets/62579660/bd61e389-d3b2-4539-9845-dae3e7d28d96)
 
 ## Presentation Material 
 ### Solution video
+https://www.youtube.com/watch?v=7-NvmjDyJT8
 ### Project development roadmap
+![Frame 19](https://github.com/GovanDBT/CO2/assets/62579660/800d7b06-5a5a-4aa1-b320-14b14c4820ce)
 
 ## Additional Details
 ### How to run the project
